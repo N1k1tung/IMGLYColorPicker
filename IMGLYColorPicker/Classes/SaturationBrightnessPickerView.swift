@@ -94,7 +94,7 @@ class SaturationBrightnessPickerView: UIControl {
         let colorSpace = CGColorSpace.p3OrDeviceRGB
         let horizontalColors = [
             UIColor(deviceDependentRed: 1, green: 1, blue: 1, alpha: 1).cgColor,
-            UIColor(hue: CGFloat(displayedHue.value), saturation: 1, brightness: 1, alpha: 1).cgColor
+            UIColor(hue: CGFloat(displayedHue), saturation: 1, brightness: 1, alpha: 1).cgColor
         ]
 
         if let horizontalGradient = CGGradient(colorsSpace: colorSpace, colors: horizontalColors as CFArray, locations: [0, 1]) {
@@ -138,8 +138,8 @@ class SaturationBrightnessPickerView: UIControl {
     // MARK: - Marker
 
     internal func updateMarkerPosition() {
-        let xPosition = CGFloat(pickedSaturation.value) * bounds.width
-        let yPosition = bounds.height - CGFloat(pickedBrightness.value) * bounds.height
+        let xPosition = CGFloat(pickedSaturation) * bounds.width
+        let yPosition = bounds.height - CGFloat(pickedBrightness) * bounds.height
 
         markerView.center = CGPoint(
             x: max(0, min(bounds.maxX, xPosition)),

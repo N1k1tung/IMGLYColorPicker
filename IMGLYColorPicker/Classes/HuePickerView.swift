@@ -73,6 +73,6 @@ class HuePickerView: PickerView {
     override func updateMarkerPosition() {
         super.updateMarkerPosition()
 
-        markerView.center.y = max(0, min(bounds.maxY, bounds.height - CGFloat(pickedHue.value) * bounds.height))
+        markerView.center.y = max(0, min(bounds.maxY, bounds.height - CGFloat(pickedHue) * bounds.height))
     }
 }

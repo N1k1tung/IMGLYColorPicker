@@ -31,9 +31,9 @@ import UIKit
     @IBInspectable public var color: UIColor {
         get {
             return UIColor(
-                deviceDependentHue: CGFloat(huePickerView.pickedHue.value),
-                saturation: CGFloat(saturationBrightnessPickerView.pickedSaturation.value),
-                brightness: CGFloat(saturationBrightnessPickerView.pickedBrightness.value),
+                deviceDependentHue: CGFloat(huePickerView.pickedHue),
+                saturation: CGFloat(saturationBrightnessPickerView.pickedSaturation),
+                brightness: CGFloat(saturationBrightnessPickerView.pickedBrightness),
                 alpha: alphaPickerView.pickedAlpha
             )
         }
@@ -45,11 +45,11 @@ import UIKit
                 // Note: These values are actually in P3 color space now, so we can use them for `pickedHue`, `pickedBrightness` and `pickedSaturation` despite not matching types
                 let p3HSB = newValue.convertedToP3Values.hsb
 
-                huePickerView.pickedHue = DisplayP3Value(p3HSB.hue.value)
+                huePickerView.pickedHue = DisplayP3Value(p3HSB.hue)
 
                 saturationBrightnessPickerView.displayedHue = hsb.hue
-                saturationBrightnessPickerView.pickedBrightness = DisplayP3Value(p3HSB.brightness.value)
-                saturationBrightnessPickerView.pickedSaturation = DisplayP3Value(p3HSB.saturation.value)
+                saturationBrightnessPickerView.pickedBrightness = DisplayP3Value(p3HSB.brightness)
+                saturationBrightnessPickerView.pickedSaturation = DisplayP3Value(p3HSB.saturation)
 
                 var alpha: CGFloat = 0
                 newValue.getWhite(nil, alpha: &alpha)
